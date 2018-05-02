@@ -10,8 +10,10 @@
   [(ngModel)] ="newDeviceName">
 
 <!--structural directive changes the dom-->
-<p *ngIf="deviceCreated">Device was created , device name {{ newDeviceName}}</p>
-
+<p *ngIf="deviceCreated; else noDevice">Device was created , device name {{ newDeviceName}}</p>
+<ng-template #noDevice>
+  <p>Device was not created</p>
+</ng-template>
 
 <button
   class="btn btn-primary"
@@ -19,4 +21,6 @@
   (click)="onAddDevice()">Add Device</button>
 <p>All list of all devices being used: </p>
 <p>Device Name : {{ deviceName}}  OS : {{osVersion}}</p>
-<p>{{deviceAdditionStatus}}</p>
+<p [ngStyle]="{'background-color': getStatusColor()}"
+    [ngClass]="{online: deviceAdditionStatus === 'online'}">{{deviceAdditionStatus}}</p>
+<div *ngFor="let device of devices; let i = index"></div>
