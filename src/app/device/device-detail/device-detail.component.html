@@ -1,17 +1,18 @@
 <div class="row">
   <div class="col-xs-12">
-    <img src="" alt="" class="img-responsive">
+    <img [src]="device.frame" alt="" class="img-responsive">
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>Device Name</h1>
+    <h1>{{device.name}}</h1>
   </div>
 </div>
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
+    <div class="btn-group"
+    appDropdown>
       <button type="button" class="btn btn-primary dropdown-toggle">
         Manage Device <span class="caret"></span>
       </button>
@@ -24,8 +25,9 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    Description
+    {{device.platform}}
   </div>
+
 </div>
 
 

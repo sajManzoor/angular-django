@@ -12,7 +12,8 @@ import { DeviceListComponent } from './device/device-list/device-list.component'
 import { DeviceDetailComponent } from './device/device-detail/device-detail.component';
 import { DeviceItemComponent } from './device/device-list/device-item/device-item.component';
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
-import {DeviceModel} from './device/device.model';
+import {BasicHighlightDirective} from './shared/basic-highlight.directive';
+import {DropdownDirective} from './shared/dropdown.directive';
 
 
 @NgModule({
@@ -27,6 +28,8 @@ import {DeviceModel} from './device/device.model';
     DeviceDetailComponent,
     DeviceItemComponent,
     DeviceEditComponent,
+    BasicHighlightDirective,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

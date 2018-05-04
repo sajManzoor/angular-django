@@ -1,38 +1,13 @@
-<!--<label> Device Properties</label>-->
-<!--<input-->
-  <!--type="text"-->
-  <!--class="form-control"-->
-  <!--(input) = "onSucessAdd($event)">-->
-
-<!--<input-->
-  <!--type="text"-->
-  <!--class="form-control"-->
-  <!--[(ngModel)] ="newDeviceName">-->
-
-<!--&lt;!&ndash;structural directive changes the dom&ndash;&gt;-->
-<!--<p *ngIf="deviceCreated; else noDevice">Device was created , device name {{ newDeviceName}}</p>-->
-<!--<ng-template #noDevice>-->
-  <!--<p>Device was not created</p>-->
-<!--</ng-template>-->
-
-<!--<button-->
-  <!--class="btn btn-primary"-->
-  <!--[disabled]="!addNewDevice"-->
-  <!--(click)="onAddDevice()">Add Device</button>-->
-<!--<p>All list of all devices being used: </p>-->
-<!--<p>Device Name : {{ deviceName}}  OS : {{osVersion}}</p>-->
-<!--<p [ngStyle]="{'background-color': getStatusColor()}"-->
-    <!--[ngClass]="{online: deviceAdditionStatus === 'online'}">{{deviceAdditionStatus}}</p>-->
-<!--<div *ngFor="let device of devices; let i = index"></div>-->
-
-
 <div class = "row">
   <div class="col-md-5">
-    <app-device-list></app-device-list>
+    <app-device-list (deviceWasSelected) = "selectedDevice = $event"></app-device-list>
   </div>
   <div class="col-md-7">
-    <app-device-detail></app-device-detail>
-    <app-device-edit></app-device-edit>
+    <app-device-detail *ngIf="selectedDevice; else infoText"
+      [device]="selectedDevice"></app-device-detail>
+    <ng-template #infoText>
+      <p>Please select a Device.</p>
+    </ng-template>
   </div>
 
 </div>

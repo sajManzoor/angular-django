@@ -1,3 +1,10 @@
-<p>
-  device-item works!
-</p>
+<a href="#" class="list-group-item clearfix" (click) = 'onDeviceClicked()' appBasicHighlight>
+  <div class="pull-left">
+    <h4 class ="list-group-item-heading">{{device.name}}</h4>
+    <p class="list-group-item-text">{{device.platform}}</p>
+    <p class="list-group-item-text">{{device.type}}</p>
+  </div>
+  <span class="pull-right">
+        <img [src]="device.frame" alt="" class="img-responsive" style="max-height: 50px;">
+      </span>
+</a>
