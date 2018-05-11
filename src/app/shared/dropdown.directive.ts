@@ -2,7 +2,7 @@ import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Rendere
 
 @Directive({
   selector: '[appDropdown]'
-}
+})
 export class DropdownDirective {
   @HostBinding('class.open') isOpen = false;
 

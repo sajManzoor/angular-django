@@ -1,18 +1,17 @@
 <div class ="row">
   <div class="col-xs-12">
-    <button class="btn btn-success">Add Device</button>
+    <button class="btn btn-success" (click) = "OnNewDevice()">Add Device</button>
   </div>
 </div>
 <hr>
 <div class ="row">
   <div class="col-xs-12">
     <app-device-item
-      *ngFor="let deviceElement of devices"
+      *ngFor="let deviceElement of devices; let i = index"
       [device]="deviceElement"
-      (deviceSelected)=onDeviceSelected(deviceElement)>
+      [index]= 'i'>
     </app-device-item>
   </div>
-  <app-device-edit (deviceAdded)="newDeviceAdded($event)" > </app-device-edit>
 </div>
 
 

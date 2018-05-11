@@ -1,22 +1,23 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">QMC Testing Dashboard</a>
+      <a routerLink="/" class="navbar-brand">QMC Testing Dashboard</a>
     </div>
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href ="#" (click)="onSelect('hubs')">Grid</a></li>
-        <li><a href ="#" (click)="onSelect('devices')">Devices</a></li>
-        <li><a href ="#">Start</a></li>
-        <li><a href ="#">Run</a></li>
+        <li routerLinkActive="active"><a routerLink ="/hubs">Grid</a></li>
+        <li routerLinkActive="active"><a routerLink="/devices">Devices</a></li>
+        <li><a style="cursor:pointer">Start</a></li>
+        <li><a style="cursor:pointer">Run</a></li>
+        <li><a style="cursor:pointer">Nodes</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
-          <a href ="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+          <a style="cursor:pointer" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
          <ul class="dropdown-menu">
-           <li><a href ="#">Refresh </a></li>
-           <li><a href ="#">Results </a></li>
+           <li><a style="cursor:pointer">Refresh </a></li>
+           <li><a style="cursor:pointer">Results </a></li>
           </ul>
         </li>
       </ul>

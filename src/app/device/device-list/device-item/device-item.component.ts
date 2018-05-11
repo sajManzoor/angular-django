@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DeviceModel} from '../../device.model';
+import {DeviceService} from '../../device.service';
 
 @Component({
   selector: 'app-device-item',
@@ -8,14 +9,7 @@ import {DeviceModel} from '../../device.model';
 })
 export class DeviceItemComponent implements OnInit {
   @Input() device: DeviceModel;
-  @Output() deviceSelected = new EventEmitter<void>();
-  constructor() { }
-
+  @Input() index: number;
   ngOnInit() {
   }
-
-  onDeviceClicked(){
-    this.deviceSelected.emit();
-  }
-
 }

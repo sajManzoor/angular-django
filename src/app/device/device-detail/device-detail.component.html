@@ -17,15 +17,23 @@
         Manage Device <span class="caret"></span>
       </button>
       <ul class ="dropdown-menu">
-        <li><a href="#">Edit Device</a> </li>
-        <li><a href="#">Remove Device</a> </li>
+        <li><a style="cursor:pointer">Add to Hub</a></li>
+        <li><a style="cursor:pointer" (click)="onDeviceEdit()">Edit Device</a> </li>
+        <li><a style="cursor:pointer">Remove Device</a> </li>
       </ul>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    {{device.platform}}
+    Active Hubs:
+    <div class="col-xs-12">
+      <p
+        *ngFor="let hub of activeHubs">
+        {{hub.ip}}
+        {{hub.id}}
+      </p>
+    </div>
   </div>
 
 </div>

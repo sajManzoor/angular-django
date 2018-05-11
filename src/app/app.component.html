@@ -2,9 +2,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-device *ngIf="loadedFeature === 'devices'"></app-device>
+      <!--<app-device *ngIf="loadedFeature === 'devices'"></app-device>
       <app-hubs *ngIf="loadedFeature === 'hubs'"></app-hubs>
+      <app-nodes *ngIf="loadedFeature === 'nodes'"></app-nodes>-->
+
+      <router-outlet></router-outlet>
     </div>
+
   </div>
 </div>
 

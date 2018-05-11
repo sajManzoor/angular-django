@@ -14,6 +14,13 @@ import { DeviceItemComponent } from './device/device-list/device-item/device-ite
 import { DeviceEditComponent } from './device/device-edit/device-edit.component';
 import {BasicHighlightDirective} from './shared/basic-highlight.directive';
 import {DropdownDirective} from './shared/dropdown.directive';
+import {HubsService} from './hubs/hubs.service';
+import { NodesComponent } from './nodes/nodes.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {AppRoutingModule} from './app-routing.module';
+import { DeviceSelectComponent } from './device/device-select/device-select.component';
+
+
 
 
 @NgModule({
@@ -29,13 +36,17 @@ import {DropdownDirective} from './shared/dropdown.directive';
     DeviceItemComponent,
     DeviceEditComponent,
     BasicHighlightDirective,
-    DropdownDirective
+    DropdownDirective,
+    NodesComponent,
+    PageNotFoundComponent,
+    DeviceSelectComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [HubsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,13 +1,9 @@
 <div class = "row">
   <div class="col-md-5">
-    <app-device-list (deviceWasSelected) = "selectedDevice = $event"></app-device-list>
+    <app-device-list></app-device-list>
   </div>
   <div class="col-md-7">
-    <app-device-detail *ngIf="selectedDevice; else infoText"
-      [device]="selectedDevice"></app-device-detail>
-    <ng-template #infoText>
-      <p>Please select a Device.</p>
-    </ng-template>
+    <router-outlet></router-outlet>
   </div>
 
 </div>

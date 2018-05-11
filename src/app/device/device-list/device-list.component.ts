@@ -1,33 +1,38 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit, Output} from '@angular/core';
 import {DeviceModel} from '../device.model';
+import {DeviceService} from '../device.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-device-list',
   templateUrl: './device-list.component.html',
   styleUrls: ['./device-list.component.css']
 })
-export class DeviceListComponent implements OnInit {
-  @Output() deviceWasSelected = new EventEmitter<DeviceModel>();
-  devices:DeviceModel[] = [
-    new DeviceModel('Nexus 6P','smartphone','android','https://cdn-images-1.medium.com/max/2000/1*MYi1PJ-hdexAaNErd-pQnw.png'),
-    new DeviceModel('Nexus 6','smartphone','android','https://cdn-images-1.medium.com/max/2000/1*MYi1PJ-hdexAaNErd-pQnw.png')
-  ];
+export class DeviceListComponent implements OnInit, OnDestroy {
+    devices:DeviceModel[];
+    private subscription: Subscription;
 
-
-  constructor() { }
+  constructor(private deviceService: DeviceService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.devices = this.deviceService.getDevices();
+    this.subscription = this.deviceService.devicesUpdated
+      .subscribe(
+        (devices: DeviceModel[]) =>{
+          this.devices = devices;
+        }
+      );
   }
 
-  onDeviceSelected(device: DeviceModel){
-    this.deviceWasSelected.emit(device);
-
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
-  newDeviceAdded(device :DeviceModel){
-    console.log("new device name is "+device.name);
-    this.devices.push(device);
 
+  OnNewDevice(){
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
+
 
 }
