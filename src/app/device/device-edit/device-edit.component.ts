@@ -3,6 +3,7 @@ import {DeviceModel} from '../device.model';
 import {DeviceService} from '../device.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'app-device-edit',
@@ -32,27 +33,39 @@ export class DeviceEditComponent implements OnInit {
               this.editedItemIndex = params['id'];
               this.editedDevice = this.deviceService.getDevice(params['id']);
               console.log(this.editedDevice.frame);
-              this.deviceForm.setValue({
-                name: this.editedDevice.name,
-                platform: this.editedDevice.platform,
-                type: this.editedDevice.type,
-                udid: this.editedDevice.frame
-              });
             }
         }
       );
   }
 
   onAddDevice(form: NgForm){
-
-    // const name = this.nameInputRef.nativeElement.value;
-    // const platform = this.platformInput.nativeElement.value;
-    // const type = this.typeInput.nativeElement.value;
-    // const frame = this.frameInputRef.nativeElement.value;
     const value = form.value;
     const new_device = new DeviceModel(value.name, value.type, value.platform, value.udid);
-    // this.deviceAdded.emit(new_device);
-    this.deviceService.addDevice(new_device);
+    if (this.editMode){
+      this.deviceService.updateDevice(this.id, new_device);
+    } else {
+      this.deviceService.addDevice(new_device);
+    }
+    form.reset();
+  }
+
+  onPopulateForm(){
+    if(this.editMode) {
+      this.deviceForm.setValue({
+        name: this.editedDevice.name,
+        type: this.editedDevice.type,
+        platform: this.editedDevice.platform,
+        udid: this.editedDevice.frame
+      });
+    }
+  }
+
+  onClearForm(){
+    this.deviceForm.reset();
+  }
+  onDelete(){
+    this.onClearForm();
+    this.deviceService.deleteDevice(this.id);
   }
 
 }

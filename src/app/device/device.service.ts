@@ -4,7 +4,6 @@ import {Subject} from 'rxjs/Subject';
 
 export class DeviceService {
    devicesUpdated = new Subject<DeviceModel[]>();
-   startedDeviceEditing = new Subject<number>();
    private devices:DeviceModel[] = [
     new DeviceModel('Nexus 6P','smartphone','android','https://cdn-images-1.medium.com/max/2000/1*MYi1PJ-hdexAaNErd-pQnw.png'),
     new DeviceModel('Nexus 6','smartphone','android','https://cdn-images-1.medium.com/max/2000/1*MYi1PJ-hdexAaNErd-pQnw.png')
@@ -25,6 +24,21 @@ export class DeviceService {
 
   getDevice(index: number) {
     return this.devices.slice()[index];
+  }
+
+  updateDevice(index: number,newDevice: DeviceModel){
+    this.devices[index] = newDevice;
+    this.devicesUpdated.next(this.devices.slice());
+  }
+
+  deleteDevice(index: number){
+    this.devices.splice(index, 1);
+    this.devicesUpdated.next(this.devices.slice());
+  }
+
+  setDevices(devices: DeviceModel[]){
+    this.devices = devices;
+    this.devicesUpdated.next(this.devices.slice());
   }
 
 

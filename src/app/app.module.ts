@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {DeviceComponent} from './device/device.component';
@@ -19,6 +19,9 @@ import { NodesComponent } from './nodes/nodes.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
 import { DeviceSelectComponent } from './device/device-select/device-select.component';
+import {DeviceService} from './device/device.service';
+import {DataStorageService} from './shared/data-storage.service';
+import { HttpClientModule} from '@angular/common/http';
 
 
 
@@ -44,9 +47,11 @@ import { DeviceSelectComponent } from './device/device-select/device-select.comp
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [HubsService],
+  providers: [HubsService,DeviceService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

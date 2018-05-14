@@ -32,9 +32,6 @@ export class DeviceDetailComponent implements OnInit {
   }
 
   onDeviceEdit(){
-    //this.router.navigate(['edit'],{relativeTo: this.route});
-    console.log('the id of device is '+this.id);
-    // this.deviceService.startedDeviceEditing.next(this.id);
     this.router.navigate(['../',this.id,'edit'], {relativeTo:this.route});
   }
 }
